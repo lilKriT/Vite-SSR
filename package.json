@@ -1,11 +1,11 @@
 {
   "scripts": {
-    "dev": "npm run server:dev",
-    "prod": "npm run lint && npm run build && npm run server:prod",
+    "dev": "yarn server:dev",
+    "prod": "yarn lint && yarn build && yarn server:prod",
     "build": "vite build",
     "server": "node --loader ts-node/esm ./server/index.ts",
-    "server:dev": "npm run server",
-    "server:prod": "cross-env NODE_ENV=production npm run server",
+    "server:dev": "yarn server",
+    "server:prod": "cross-env NODE_ENV=production yarn server",
     "lint": "eslint . --max-warnings 0"
   },
   "dependencies": {
