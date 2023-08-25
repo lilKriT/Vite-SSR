@@ -2,7 +2,6 @@ import React from "react";
 import logo from "./logo.svg";
 import { PageContextProvider } from "./usePageContext";
 import type { PageContext } from "./types";
-import "./PageShell.css";
 import { Link } from "./Link";
 export { PageShell };
 import "./index.css";
@@ -25,6 +24,9 @@ function PageShell({
             </Link>
             <Link className="navitem" href="/about">
               About
+            </Link>
+            <Link className="navitem" href="/test">
+              Test Page
             </Link>
           </Sidebar>
           <Content>{children}</Content>
