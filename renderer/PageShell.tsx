@@ -5,6 +5,7 @@ import type { PageContext } from "./types";
 import { Link } from "./Link";
 export { PageShell };
 import "./index.css";
+import { SmallComponent } from "./SmallComponent";
 
 function PageShell({
   children,
@@ -29,6 +30,7 @@ function PageShell({
               Test Page
             </Link>
           </Sidebar>
+          <SmallComponent />
           <Content>{children}</Content>
         </Layout>
       </PageContextProvider>
