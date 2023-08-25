@@ -41,6 +41,11 @@ async function startServer() {
   // Other middlewares (e.g. some RPC middleware such as Telefunc)
   // ...
 
+  // My routes:
+  app.get("/api/v1/hi", async (req, res) => {
+    res.status(200).send("Hello!");
+  });
+
   // Vite-plugin-ssr middleware. It should always be our last middleware (because it's a
   // catch-all middleware superseding any middleware placed after it).
   app.get("*", async (req, res, next) => {
