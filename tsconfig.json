@@ -14,7 +14,7 @@
     "transpileOnly": true,
     "esm": true,
     "compilerOptions": {
-      "moduleResolution": "Node16"
+      "moduleResolution": "Bundler"
     }
   }
 }
