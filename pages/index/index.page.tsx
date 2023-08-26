@@ -8,21 +8,55 @@ const url = "http://localhost:3000";
 
 function Page() {
   const [tasks, setTasks] = useState<ITask[]>([]);
+  const [title, setTitle] = useState("");
 
   useEffect(() => {
-    const fetchTasks = async () => {
-      const res = await fetch(`${url}/api/v1/tasks`);
-      const data = await res.json();
-      setTasks(data);
-    };
     fetchTasks();
   }, []);
 
+  // Tasks CRUD
+  const fetchTasks = async () => {
+    const res = await fetch(`${url}/api/v1/tasks`);
+    const data = await res.json();
+    setTasks(data);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    await fetch(`${url}/api/v1/tasks`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title }),
+    });
+
+    await fetchTasks();
+  };
+
   return (
     <section className="flex justify-center min-h-screen">
-      <div className="container py-16">
+      <div className="container py-16 flex flex-col">
         <h1 className="text-3xl font-bold">Tasks</h1>
         <TaskList tasks={tasks} />
+        <form
+          onSubmit={(e) => handleSubmit(e)}
+          className="bg-neutral-600 mt-8 p-4 rounded-lg flex items-center gap-4 mx-auto w-full max-w-2xl"
+        >
+          <label className="text-lg grow">
+            <input
+              type="text"
+              placeholder="Task"
+              className="bg-transparent w-full text-2xl p-2 border-b-2 border-b-emerald-500 focus:outline-none"
+              autoFocus
+              required
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </label>
+          <button className="btn btn--primary">Add</button>
+        </form>
       </div>
     </section>
   );
