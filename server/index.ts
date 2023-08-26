@@ -8,7 +8,10 @@ import express from "express";
 import compression from "compression";
 import { renderPage } from "vite-plugin-ssr/server";
 import { root } from "./root.js";
+import dotenv from "dotenv";
 const isProduction = process.env.NODE_ENV === "production";
+import colors from "colors";
+import connectDB from "./config/db.js";
 
 startServer();
 
@@ -40,6 +43,8 @@ async function startServer() {
   // ...
   // Other middlewares (e.g. some RPC middleware such as Telefunc)
   // ...
+  dotenv.config();
+  const PORT = process.env.PORT || 3000;
 
   // My routes:
   app.get("/api/v1/hi", async (req, res) => {
@@ -67,7 +72,10 @@ async function startServer() {
     }
   });
 
-  const port = process.env.PORT || 3000;
-  app.listen(port);
-  console.log(`Server running at http://localhost:${port}`);
+  connectDB();
+  app.listen(PORT, () =>
+    console.log(
+      colors.underline.green(`Server running at http://localhost:${PORT}`)
+    )
+  );
 }
