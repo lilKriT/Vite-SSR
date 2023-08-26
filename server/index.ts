@@ -12,6 +12,7 @@ import dotenv from "dotenv";
 const isProduction = process.env.NODE_ENV === "production";
 import colors from "colors";
 import connectDB from "./config/db.js";
+import taskRoutes from "./routes/TaskRoutes.js";
 
 startServer();
 
@@ -50,6 +51,7 @@ async function startServer() {
   app.get("/api/v1/hi", async (req, res) => {
     res.status(200).send("Hello!");
   });
+  app.use("/api/v1/tasks", taskRoutes);
 
   // Vite-plugin-ssr middleware. It should always be our last middleware (because it's a
   // catch-all middleware superseding any middleware placed after it).
