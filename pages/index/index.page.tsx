@@ -4,15 +4,9 @@ export { Page };
 
 function Page() {
   return (
-    <>
-      <h1 className="text-red-500">Welcome</h1>
-      This page is:
-      <ul>
-        <li>Rendered to HTML.</li>
-        <li>
-          Interactive. <Counter />
-        </li>
-      </ul>
-    </>
+    <section>
+      <h1 className="text-red-500">Tasks</h1>
+      <p>No tasks here so far.</p>
+    </section>
   );
 }
