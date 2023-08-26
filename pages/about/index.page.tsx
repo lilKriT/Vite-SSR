@@ -1,14 +1,15 @@
-import "./code.css";
-
 export { Page };
 
 function Page() {
   return (
-    <>
-      <h1>About</h1>
-      <p>
-        Example of using <code>vite-plugin-ssr</code>.
-      </p>
-    </>
+    <section className="flex justify-center min-h-screen">
+      <div className="container py-16">
+        <h1>About me</h1>
+        <p>
+          I'm lilKriT, the best coder ever who happened to make a tiny mistake
+          and now has to redo a big project. Happens to the best of us.
+        </p>
+      </div>
+    </section>
   );
 }

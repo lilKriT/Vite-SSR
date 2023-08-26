@@ -1,17 +1,22 @@
-import React from "react";
 import { Link } from "./Link";
 
 const NavBar = () => {
   return (
-    <header className="">
-      <Link href="/">Logo</Link>
+    <header className="flex justify-between items-center p-2">
+      <Link href="/" className="logo">
+        Logo
+      </Link>
       <nav>
-        <ul>
+        <ul className="flex gap-2">
           <li>
-            <Link href="/link1">Link 1</Link>
+            <Link href="/about" className="navLink">
+              About
+            </Link>
           </li>
           <li>
-            <Link href="/link2">Link 2</Link>
+            <Link href="/nothing" className="navLink">
+              Nothing?
+            </Link>
           </li>
         </ul>
       </nav>
