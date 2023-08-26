@@ -10,12 +10,13 @@
 
 @layer components {
   .logo {
-    @apply px-4 py-2;
+    @apply outline outline-1 px-4 py-2;
     @apply hover:scale-105 duration-150 ease-in-out;
   }
 
   .navLink {
-    @apply bg-red-500 flex px-4 py-2;
+    @apply bg-emerald-800 flex px-4 py-2;
+    @apply duration-150 ease-in-out hover:bg-emerald-400;
   }
 }
 
