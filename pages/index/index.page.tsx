@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ITask from "../../interfaces/ITask";
+import TaskList from "./TaskList";
 
 export { Page };
 
@@ -15,14 +16,13 @@ function Page() {
       setTasks(data);
     };
     fetchTasks();
-    console.log(tasks);
   }, []);
 
   return (
     <section className="flex justify-center min-h-screen">
       <div className="container py-16">
         <h1 className="text-3xl font-bold">Tasks</h1>
-        <p>No tasks here so far.</p>
+        <TaskList tasks={tasks} />
       </div>
     </section>
   );
