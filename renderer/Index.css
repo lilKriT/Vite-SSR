@@ -26,6 +26,10 @@
   .btn--primary {
     @apply bg-emerald-500;
   }
+
+  .btn--danger {
+    @apply bg-red-600;
+  }
 }
 
 @layer utilities {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ITask from "../../interfaces/ITask";
 import TaskList from "./TaskList";
+import { deleteTask } from "../../server/controllers/TaskController";
 
 export { Page };
 
@@ -35,11 +36,24 @@ function Page() {
     await fetchTasks();
   };
 
+  const handleDelete = async (id: string) => {
+    console.log(`Deleting ${id}`);
+
+    await fetch(`${url}/api/v1/tasks/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    await fetchTasks();
+  };
+
   return (
     <section className="flex justify-center min-h-screen">
       <div className="container py-16 flex flex-col">
         <h1 className="text-3xl font-bold">Tasks</h1>
-        <TaskList tasks={tasks} />
+        <TaskList tasks={tasks} handleDelete={handleDelete} />
         <form
           onSubmit={(e) => handleSubmit(e)}
           className="bg-neutral-600 mt-8 p-4 rounded-lg flex items-center gap-4 mx-auto w-full max-w-2xl"
