@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import ITask from "../../interfaces/ITask";
 import TaskEdit from "../../types/TaskEdit";
+import { Link } from "../../renderer/Link";
 
 const Task = ({
   task,
@@ -26,6 +27,9 @@ const Task = ({
     <article className="p-4 rounded-xl bg-neutral-700 flex justify-between items-center">
       <h2 className="text-xl">{task.title}</h2>
       <div className="flex gap-2">
+        <Link className="btn btn--primary" href={`/tasks/${task._id}`}>
+          Read more
+        </Link>
         <input
           type="checkbox"
           className="w-8 rounded-lg cursor-pointer"
