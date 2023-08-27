@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import expressAsyncHandler from "express-async-handler";
 import Task from "../models/Task.js";
-import taskRoutes from "../routes/TaskRoutes.js";
 
 const getAllTasks = expressAsyncHandler(async (req: Request, res: Response) => {
   const allTasks = await Task.find();

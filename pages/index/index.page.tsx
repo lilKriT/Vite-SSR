@@ -4,7 +4,9 @@ import TaskList from "./TaskList";
 
 export { Page };
 
-const url = "http://localhost:3000";
+// const url = "http://localhost:3000";
+const url = import.meta.env.PUBLIC_ENV__URL;
+const secret = import.meta.env.PUBLIC_ENV__SECRET;
 
 function Page() {
   const [tasks, setTasks] = useState<ITask[]>([]);
@@ -59,6 +61,8 @@ function Page() {
   return (
     <section className="flex justify-center min-h-screen">
       <div className="container py-16 flex flex-col">
+        <p>Secret: {secret}</p>
+        <p>URL: {url}</p>
         <h1 className="text-3xl font-bold">Tasks</h1>
         <TaskList
           tasks={tasks}

@@ -1,5 +1,3 @@
-import React from "react";
-import { PageContextBuiltInServer } from "vite-plugin-ssr/types";
 import ITask from "../../../interfaces/ITask";
 import { PageProps } from "../../../renderer/types";
 
