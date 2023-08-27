@@ -20,9 +20,23 @@ async function render(pageContext: PageContextServer) {
   );
 
   // See https://vite-plugin-ssr.com/head
-  const { documentProps } = pageContext.exports;
-  const title = (documentProps && documentProps.title) || "Vite SSR app";
+  const { documentProps, getDocumentProps } = pageContext.exports;
+
+  // These are old:
+  // const title = (documentProps && documentProps.title) || "Vite SSR app";
+  // const desc =
+  //   (documentProps && documentProps.description) ||
+  //   "App using Vite + vite-plugin-ssr";
+
+  // There are new:
+  const title =
+    (getDocumentProps && pageProps && getDocumentProps(pageContext).title) ||
+    (documentProps && documentProps.title) ||
+    "Vite SSR app";
   const desc =
+    (getDocumentProps &&
+      pageProps &&
+      getDocumentProps(pageContext).description) ||
     (documentProps && documentProps.description) ||
     "App using Vite + vite-plugin-ssr";
 

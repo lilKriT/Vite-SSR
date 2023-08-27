@@ -13,9 +13,8 @@ async function onBeforeRender(pageContext: PageContextBuiltInServer) {
     pageContext: {
       pageProps: {
         task,
-      },
-      documentProps: {
         title: `Task: ${task.title}`,
+        description: `You can do it!`,
       },
     },
   };
