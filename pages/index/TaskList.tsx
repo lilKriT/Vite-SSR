@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ITask from "../../interfaces/ITask";
+import TaskEdit from "../../types/TaskEdit";
 
 const Task = ({
   task,
@@ -7,14 +8,18 @@ const Task = ({
   handleDelete,
 }: {
   task: ITask;
-  handleEdit: (id: string, args: Object) => void;
+  handleEdit: (id: string, args: TaskEdit) => void;
   handleDelete: (id: string) => void;
 }) => {
-  const [checked, setChecked] = useState(task.completed);
+  const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    setChecked(task.completed);
+  }, [task]);
 
   const handleChanged = () => {
-    setChecked(!checked);
     handleEdit(task._id, { completed: !checked });
+    setChecked(!checked);
   };
 
   return (
@@ -45,10 +50,10 @@ const TaskList = ({
 }: {
   tasks: ITask[];
   handleDelete: (id: string) => void;
-  handleEdit: (id: string, args: Object) => void;
+  handleEdit: (id: string, args: TaskEdit) => void;
 }) => {
   return (
-    <div>
+    <div className="mt-8">
       {tasks.length === 0 ? (
         <p className="text-lg">No tasks yet.</p>
       ) : (
