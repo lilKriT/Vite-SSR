@@ -24,6 +24,7 @@ function Page() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setTitle("");
 
     await fetch(`${url}/api/v1/tasks`, {
       method: "POST",
@@ -36,14 +37,21 @@ function Page() {
     await fetchTasks();
   };
 
-  const handleDelete = async (id: string) => {
-    console.log(`Deleting ${id}`);
-
+  const handleEdit = async (id: string, args: Object) => {
     await fetch(`${url}/api/v1/tasks/${id}`, {
-      method: "DELETE",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify(args),
+    });
+
+    await fetchTasks();
+  };
+
+  const handleDelete = async (id: string) => {
+    await fetch(`${url}/api/v1/tasks/${id}`, {
+      method: "DELETE",
     });
 
     await fetchTasks();
@@ -53,7 +61,11 @@ function Page() {
     <section className="flex justify-center min-h-screen">
       <div className="container py-16 flex flex-col">
         <h1 className="text-3xl font-bold">Tasks</h1>
-        <TaskList tasks={tasks} handleDelete={handleDelete} />
+        <TaskList
+          tasks={tasks}
+          handleDelete={handleDelete}
+          handleEdit={handleEdit}
+        />
         <form
           onSubmit={(e) => handleSubmit(e)}
           className="bg-neutral-600 mt-8 p-4 rounded-lg flex items-center gap-4 mx-auto w-full max-w-2xl"
