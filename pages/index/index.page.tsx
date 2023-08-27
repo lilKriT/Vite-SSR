@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import ITask from "../../interfaces/ITask";
 import TaskList from "./TaskList";
-import { deleteTask } from "../../server/controllers/TaskController";
-import TaskEdit from "../../types/TaskEdit";
 
 export { Page };
 
@@ -38,7 +36,7 @@ function Page() {
     await fetchTasks();
   };
 
-  const handleEdit = async (id: string, args: TaskEdit) => {
+  const handleEdit = async (id: string, args: Partial<ITask>) => {
     await fetch(`${url}/api/v1/tasks/${id}`, {
       method: "PUT",
       headers: {
