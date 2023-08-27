@@ -6,7 +6,19 @@ import { PageProps } from "../../../renderer/types";
 export { Page };
 
 const Page = ({ task }: { task: ITask }) => {
-  return <div>This should work.{task.title}</div>;
+  return (
+    <section className="flex justify-center min-h-screen">
+      <div className="container py-16">
+        <p>This is your current task:</p>
+        <h2 className="text-3xl font-bold">{task.title}</h2>
+        {!task.completed ? (
+          <p>So far, not done.</p>
+        ) : (
+          <p>Task completed, good job!</p>
+        )}
+      </div>
+    </section>
+  );
 };
 
 // Custom Export

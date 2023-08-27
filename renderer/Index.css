@@ -21,14 +21,17 @@
 
   .btn {
     @apply px-4 py-2 rounded-lg;
+    @apply duration-300 ease-in-out;
   }
 
   .btn--primary {
     @apply bg-emerald-500;
+    @apply hover:bg-emerald-300 hover:text-neutral-800;
   }
 
   .btn--danger {
     @apply bg-red-600;
+    @apply hover:bg-red-400 hover:text-neutral-800;
   }
 }
 
