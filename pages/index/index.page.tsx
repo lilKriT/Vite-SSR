@@ -88,3 +88,9 @@ function Page() {
     </section>
   );
 }
+
+export const documentProps = {
+  // This title and description will override the defaults
+  title: "Super Awesome Task List!",
+  description: "Stay organized ;)",
+};
