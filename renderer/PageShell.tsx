@@ -2,7 +2,7 @@ import React from "react";
 import { PageContextProvider } from "./usePageContext";
 import type { PageContext } from "./types";
 export { PageShell };
-import "./index.css";
+import "./PageShell.css";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 
