@@ -1,4 +1,5 @@
 import { PageContextBuiltInServer } from "vite-plugin-ssr/types";
+import fetch from "cross-fetch";
 import ITask from "../../../interfaces/ITask";
 
 export { onBeforeRender };
