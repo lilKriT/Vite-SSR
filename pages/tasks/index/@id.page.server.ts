@@ -8,7 +8,7 @@ async function onBeforeRender(pageContext: PageContextBuiltInServer) {
   const url = `${localURL}/api/v1/tasks/${pageContext.routeParams.id}`;
 
   const res = await fetch(url);
-  const task = (await res.json()) as ITask;
+  const task = await res.json();
   // const task = {
   //   title: url,
   //   completed: true,
