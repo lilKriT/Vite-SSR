@@ -3,10 +3,12 @@ import ITask from "../../../interfaces/ITask";
 
 export { onBeforeRender };
 
-async function onBeforeRender(pageContext: PageContextBuiltInServer) {
-  const url = `http://localhost:3000/api/v1/tasks/${pageContext.routeParams.id}`;
+const url = import.meta.env.PUBLIC_ENV__URL;
 
-  const res = await fetch(url);
+async function onBeforeRender(pageContext: PageContextBuiltInServer) {
+  const paramsURL = `${url}/api/v1/tasks/${pageContext.routeParams.id}`;
+
+  const res = await fetch(paramsURL);
   const task = (await res.json()) as ITask;
 
   return {
