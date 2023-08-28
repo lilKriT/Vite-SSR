@@ -6,7 +6,8 @@ export { onBeforeRender };
 const url = import.meta.env.PUBLIC_ENV__URL;
 
 async function onBeforeRender(pageContext: PageContextBuiltInServer) {
-  const paramsURL = `${url}/api/v1/tasks/${pageContext.routeParams.id}`;
+  const paramsURL = `${url}/abc/api/v1/tasks/${pageContext.routeParams.id}`;
+  console.log(paramsURL);
 
   const res = await fetch(paramsURL);
   const task = (await res.json()) as ITask;
