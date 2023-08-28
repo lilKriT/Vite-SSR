@@ -7,12 +7,12 @@ async function onBeforeRender(pageContext: PageContextBuiltInServer) {
   const localURL = import.meta.env.PUBLIC_ENV__URL;
   const url = `${localURL}/api/v1/tasks/${pageContext.routeParams.id}`;
 
-  // const res = await fetch(url);
-  // const task = (await res.json()) as ITask;
-  const task = {
-    title: url,
-    completed: true,
-  };
+  const res = await fetch(url);
+  const task = (await res.json()) as ITask;
+  // const task = {
+  //   title: url,
+  //   completed: true,
+  // };
 
   return {
     pageContext: {
