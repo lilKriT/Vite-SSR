@@ -5,14 +5,14 @@ export { onBeforeRender };
 
 async function onBeforeRender(pageContext: PageContextBuiltInServer) {
   const localURL = import.meta.env.PUBLIC_ENV__URL;
-  const url = `${localURL}/api/v1/tasks/${pageContext.routeParams.id}`;
+  const url = `https://vite-ssr-production.up.railway.app/api/v1/tasks/${pageContext.routeParams.id}`;
 
-  // const res = await fetch(url);
-  // const task = await res.json();
-  const task = {
-    title: url,
-    completed: true,
-  };
+  const res = await fetch(url);
+  const task = await res.json();
+  // const task = {
+  //   title: url,
+  //   completed: true,
+  // };
 
   return {
     pageContext: {
